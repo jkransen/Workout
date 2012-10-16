@@ -1,0 +1,17 @@
+body {
+	background-color: fdfdff;
+}
+
+.selected, .unselected {
+	margin-bottom: .5em;
+}
+
+.uibutton.selected {
+	display: block;
+	background-color: #00ee22;
+}
+
+.uibutton.unselected {
+	display: block;
+	background-color: #ff8888;
+}

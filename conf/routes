@@ -3,15 +3,37 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /login                      controllers.Application.login
-GET     /logout                     controllers.Application.logout
+GET     /          controllers.Application.index
+GET     /login     controllers.Application.login
+GET     /logout    controllers.Application.logout
 
 GET     /google/login               controllers.Google.loginGoogle
 GET     /google/oauth2callback      controllers.Google.oauth2callback(state: String, code: String)
 
 GET     /facebook/login             controllers.Facebook.login
 GET     /facebook/login2            controllers.Facebook.login2(code: String)
+
+GET     /selection/gyms             controllers.Selection.listGyms(select: Boolean = false)
+GET     /selection/gyms/            controllers.Selection.listGyms(select: Boolean = true)
+GET     /selection/gyms/add         controllers.Selection.newGym
+POST    /selection/gyms/add         controllers.Selection.addGym
+GET     /selection/gyms/:gymId      controllers.Selection.getGym(gymId: Long)
+
+GET     /selection/gyms/:gymId/machines              controllers.Selection.listMachines(gymId: Long, select: Boolean = false)
+GET     /selection/gyms/:gymId/machines/             controllers.Selection.listMachines(gymId: Long, select: Boolean = true)
+GET     /selection/gyms/:gymId/machines/add          controllers.Selection.newMachine(gymId: Long)
+POST    /selection/gyms/:gymId/machines/add          controllers.Selection.addMachine(gymId: Long)
+GET     /selection/gyms/:gymId/machines/:machineId   controllers.Selection.getMachine(gymId: Long, machineId: Long)
+
+GET     /selection/gyms/:gymId/machines/:machineId/exercises               controllers.Selection.listExercises(gymId: Long, machineId: Long, select: Boolean = false)
+GET     /selection/gyms/:gymId/machines/:machineId/exercises/              controllers.Selection.listExercises(gymId: Long, machineId: Long, select: Boolean = true)
+GET     /selection/gyms/:gymId/machines/:machineId/exercises/add           controllers.Selection.newExercise(gymId: Long, machineId: Long)
+POST    /selection/gyms/:gymId/machines/:machineId/exercises/add           controllers.Selection.addExercise(gymId: Long, machineId: Long)
+GET     /selection/gyms/:gymId/machines/:machineId/exercises/:exerciseId   controllers.Selection.getExercise(gymId: Long, machineId: Long, exerciseId: Long)
+
+GET     /selection/gyms/:gymId/machines/:machineId/exercises/:exerciseId/performances/      controllers.Selection.listPerformances(gymId: Long, machineId: Long, exerciseId: Long)
+GET     /selection/gyms/:gymId/machines/:machineId/exercises/:exerciseId/performances/add   controllers.Selection.newPerformance(gymId: Long, machineId: Long, exerciseId: Long)
+POST    /selection/gyms/:gymId/machines/:machineId/exercises/:exerciseId/performances/add   controllers.Selection.addPerformance(gymId: Long, machineId: Long, exerciseId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

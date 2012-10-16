@@ -2,9 +2,11 @@
 
 @main("Workout") {
 
-	@message
-	    
-	<a href="login">Log in</a>
-	<a href="logout">Log out</a>
+	<a href="@routes.Application.login">Log in</a>
+	<a href="@routes.Application.logout">Log out</a>
 	<br/>
+	
+	@message<br/>
+
+	<a class="unselected" href="@routes.Selection.listGyms(false)">Select workout</a>
 }

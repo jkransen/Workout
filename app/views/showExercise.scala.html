@@ -1,0 +1,8 @@
+@(message: String, gym: Gym, machine: Machine, exercise: Exercise)(content: Html)
+
+@showMachine(message, gym, machine) {
+
+	@content
+
+	<a class="selected" href="@routes.Selection.listExercises(gym.id, machine.id, true)">Exercise: @{exercise.variation} @{exercise.musclezone}</a>
+}

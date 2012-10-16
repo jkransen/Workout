@@ -1,17 +1,20 @@
 package controllers
 
+import play.api.GlobalSettings
 import play.api.mvc.Action
 import play.api.mvc.Controller
 
 import models.User
+import models.Gym
 
 object Application extends Controller {
 
   def index = Action {
     request =>
-      request.session.get("connected").map { email =>
-        val user = User.findUserByEmail(email);
-        Ok(views.html.index("Hello " + user.fullName))
+      val session = request.session
+      session.get("connected").map { email =>
+        val user = User(email);
+        Ok(views.html.index("Hello " + user.fullname))
       }.getOrElse {
         Ok(views.html.index("Not logged in"))
       }
@@ -25,3 +28,4 @@ object Application extends Controller {
     Redirect(controllers.routes.Application.index).withNewSession
   }
 }
+

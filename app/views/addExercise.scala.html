@@ -1,0 +1,13 @@
+@(exerciseForm: Form[Exercise], gym: Gym, machine: Machine)
+
+@showMachine("Add exercise", gym, machine) {
+    
+    @helper.form(action = routes.Selection.addExercise(gym.id, machine.id)) {
+    
+    	@helper.inputText(exerciseForm("variation"))
+    	@helper.inputText(exerciseForm("zone"))
+    
+		<input type="submit" value="Save"/>
+	}
+}
+

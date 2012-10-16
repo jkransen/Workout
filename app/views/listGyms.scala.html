@@ -1,0 +1,12 @@
+@(gyms: Seq[Gym])
+
+@main("Select gym") {
+    
+	@gyms.map { gym =>
+  		<a class="unselected" href="@routes.Selection.getGym(gym.id)">@gym.name</a>
+	} 
+
+    <a class="unselected" href="@routes.Selection.addGym">Add a gym</a>
+    
+}
+

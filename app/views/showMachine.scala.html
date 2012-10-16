@@ -1,0 +1,8 @@
+@(message: String, gym: Gym, machine: Machine)(content: Html)
+
+@showGym(message, gym) {
+
+	@content
+
+	<a class="selected" href="@routes.Selection.listMachines(gym.id, true)">Machine: @{machine.name}</a>
+}

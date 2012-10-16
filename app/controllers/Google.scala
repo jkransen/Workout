@@ -1,19 +1,17 @@
 package controllers
 
-import anorm._
-import play.api._
-import play.api.http._
+import play.api.Play.current
 import play.api.libs.json.JsValue
 import play.api.libs.ws.WS
 import play.api.mvc._
 import models.User
-import anorm.NotAssigned
 
 object Google extends Controller {
   
-  val clientId = "YOUR_CLIENT_ID.apps.googleusercontent.com"
-  val clientSecret = "YOUR_CLIENT_SECRET"
-  val redirectUrl = "http://YOUR_FULL_PATH_TO//google/oauth2callback"
+  val config = play.api.Play.configuration
+  val clientId = config.getString("google.client_id").get
+  val clientSecret = config.getString("google.client_secret").get
+  val redirectUrl = config.getString("google.redirect_url").get
 
   def loginGoogle = Action {
     val scope = """https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&state=%2Fprofile&"""
@@ -25,7 +23,6 @@ object Google extends Controller {
   }
 
   def oauth2callback(state: String, code: String) = Action {
-    println("logged in, state: " + state + ", code: " + code)
     val postBody = "code=" + code + "&client_id=" + clientId + "&client_secret=" + clientSecret + "&redirect_uri=" + redirectUrl + "&grant_type=authorization_code"
     val body = WS.url("https://accounts.google.com/o/oauth2/token").withHeaders("Content-Type" -> "application/x-www-form-urlencoded").post(postBody)
     val accessJson = body.await.get.json
@@ -37,13 +34,13 @@ object Google extends Controller {
 
   def getOrCreateUser(googleUser: JsValue): User = {
     def getExistingUser(email: String): User = {
-      User.findUserByEmail(email)
+      User(email)
     }
     val email = strip((googleUser \ "email").toString())
     val existingUser = getExistingUser(email)
     if (existingUser == null) {
       val fullName = strip((googleUser \ "name").toString())
-      User.create(User(email, fullName))
+      User.create(User(0, email, fullName))
       getExistingUser(email)
     } else {
       existingUser

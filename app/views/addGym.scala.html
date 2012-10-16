@@ -1,0 +1,12 @@
+@(gymForm: Form[Gym])
+
+@main("Add gym") {
+    
+    @helper.form(action = routes.Selection.addGym) {
+    
+    	@helper.inputText(gymForm("name"))
+    
+		<input type="submit" value="Save"/>
+	}
+}
+

@@ -5,11 +5,26 @@
 <html>
     <head>
         <title>@title</title>
+        <link rel="stylesheet" media="screen" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/dumbbell.jpg")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    	<script>
+	    $(function() {
+	        $( "input[type=submit], a.selected, a.unselected" )
+	            .button().css("display", "block");
+	        $( "a.selected" )
+	            .button().css("background-color", "#44ff44");
+	        $( "a.unselected" )
+            	.button().css("background-color", "#ff4422");
+	    });
+	    </script>
     </head>
     <body>
         @content
+        
+        <a class="selected" href="@routes.Application.index">Home</a>
     </body>
 </html>

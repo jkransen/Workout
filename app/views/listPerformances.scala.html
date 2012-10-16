@@ -1,0 +1,14 @@
+@(gym: Gym, machine: Machine, exercise: Exercise, performances: Seq[Performance])
+
+@showExercise("Performances", gym, machine, exercise) {
+    
+    <ul> 
+	@performances.map { performance =>
+  		<li>@performance.tstamp <strong>@performance.weight</strong> @performance.notes</li>
+	} 
+	</ul>
+
+    <a class="unselected" href="@routes.Selection.addPerformance(gym.id, machine.id, exercise.id)">Add a performance</a>
+    
+}
+

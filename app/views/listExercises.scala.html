@@ -1,0 +1,12 @@
+@(gym: Gym, machine: Machine, exercises: Seq[Exercise])
+
+@showMachine("Select exercise", gym, machine) {
+    
+	@exercises.map { exercise =>
+  		<a class="unselected" href="@routes.Selection.getExercise(gym.id, machine.id, exercise.id)">@exercise.variation</a>
+	} 
+
+    <a class="unselected" href="@routes.Selection.addExercise(gym.id, machine.id)">Add an exercise</a>
+    
+}
+
