@@ -11,6 +11,7 @@ GET     /google/login               controllers.Google.loginGoogle
 GET     /google/oauth2callback      controllers.Google.oauth2callback(state: String, code: String)
 
 GET     /facebook/login             controllers.Facebook.login
+POST    /facebook/canvas            controllers.Facebook.canvas
 GET     /facebook/login2            controllers.Facebook.login2(code: String)
 
 GET     /selection/gyms             controllers.Selection.listGyms(select: Boolean = false)

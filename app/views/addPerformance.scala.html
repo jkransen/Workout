@@ -1,6 +1,6 @@
 @(performanceForm: Form[Performance], gym: Gym, machine: Machine, exercise: Exercise)
 
-@showExercise("Add performance", gym, machine, exercise) {
+@showExercise(gym, machine, exercise, "Add performance") {
     
     @helper.form(action = routes.Selection.addPerformance(gym.id, machine.id, exercise.id)) {
     

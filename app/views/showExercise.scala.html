@@ -1,6 +1,6 @@
-@(message: String, gym: Gym, machine: Machine, exercise: Exercise)(content: Html)
+@(gym: Gym, machine: Machine, exercise: Exercise, title: String = "Exercise")(content: Html)
 
-@showMachine(message, gym, machine) {
+@showMachine(gym, machine, title) {
 
 	@content
 

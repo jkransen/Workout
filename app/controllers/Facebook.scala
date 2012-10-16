@@ -19,6 +19,12 @@ object Facebook extends Controller {
     Redirect(url)
   }
 
+  def canvas = Action {
+    request =>
+      println(request.rawQueryString)
+      Redirect(controllers.routes.Facebook.login)
+  }
+
   def login2(code: String) = Action {
     if (!code.isEmpty) {
       val accessTokenUrl = "https://graph.facebook.com/oauth/access_token?client_id=" + appId + "&client_secret=" + appSecret + "&code=" + code + "&redirect_uri=" + redirectUrl
@@ -33,7 +39,7 @@ object Facebook extends Controller {
         }
       }
     } else {
-      Redirect(controllers.routes.Facebook.login);
+      Redirect(controllers.routes.Facebook.login)
     }
   }
 

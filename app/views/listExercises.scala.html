@@ -1,6 +1,6 @@
-@(gym: Gym, machine: Machine, exercises: Seq[Exercise])
+@(gym: Gym, machine: Machine, exercises: Seq[Exercise], title: String = "Select exercise")
 
-@showMachine("Select exercise", gym, machine) {
+@showMachine(gym, machine, title) {
     
 	@exercises.map { exercise =>
   		<a class="unselected" href="@routes.Selection.getExercise(gym.id, machine.id, exercise.id)">@exercise.variation</a>

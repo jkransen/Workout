@@ -1,6 +1,6 @@
-@(gym: Gym, machine: Machine, exercise: Exercise, performances: Seq[Performance])
+@(gym: Gym, machine: Machine, exercise: Exercise, performances: Seq[Performance], title: String = "Performances")
 
-@showExercise("Performances", gym, machine, exercise) {
+@showExercise(gym, machine, exercise, title) {
     
     <ul> 
 	@performances.map { performance =>

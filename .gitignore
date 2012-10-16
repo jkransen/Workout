@@ -11,3 +11,5 @@ dist
 .project
 .cache
 .target
+.DS_Store
+*.jeroen
