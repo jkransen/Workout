@@ -1,5 +1,11 @@
 body {
 	background-color: fdfdff;
+	font-family: verdana,arial;
+	font-size: 3em;
+}
+
+h1 {
+	font-size: 1.5em;
 }
 
 .selected, .unselected {

@@ -12,4 +12,5 @@ dist
 .cache
 .target
 .DS_Store
+conf/application.conf
 *.jeroen

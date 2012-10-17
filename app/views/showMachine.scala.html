@@ -4,5 +4,5 @@
 
 	@content
 
-	<a class="selected" href="@routes.Selection.listMachines(gym.id, true)">Machine: @{machine.name}</a>
+	<a class="selected" href="@routes.Selection.listMachines(gym.id, true)">Machine: <strong>@machine.location @machine.name</strong></a>
 }
