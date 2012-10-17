@@ -23,10 +23,10 @@ application.langs="en"
 # By convention, the default datasource is named `default`
 #
 db.default.driver=org.postgresql.Driver
-db.default.url="jdbc:postgresql://host/db"
+db.default.url="jdbc:postgresql://atom/workout"
 db.default.user=workout
-db.default.password="secret"
-#db.default.jndiName=DefaultDS
+db.default.password="3efitness"
+db.default.jndiName=DefaultDS
 
 # Evolutions
 # ~~~~~
@@ -48,10 +48,10 @@ logger.application=DEBUG
 
 ############
 # Application specific settings
-facebook.app_id=""
-facebook.app_secret=""
-facebook.redirect_url="http://somehost/facebook/login2"
+facebook.app_id="353147611440049"
+facebook.app_secret="7b364a5dc89e4da9ef2b23225c0e1a5c"
+facebook.redirect_url="http://jeroen.kransen.nl/facebook/login2"
 
-google.client_id=".apps.googleusercontent.com"
-google.client_secret=""
-google.redirect_url="http://somehost/google/oauth2callback"
+google.client_id="364229084984.apps.googleusercontent.com"
+google.client_secret="S8gP9qePDLy13BAEcTmXpPj5"
+google.redirect_url="http://jeroen.kransen.nl/google/oauth2callback"

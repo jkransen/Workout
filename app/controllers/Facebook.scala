@@ -29,9 +29,15 @@ object Facebook extends Controller {
     }
   }
 
-  def canvas(trash: Option[String]) = Action {
-    request =>
+  def canvasTrash(trash: Option[String]) = Action {
+    request => {
       println(request.rawQueryString)
+      Redirect(controllers.routes.Facebook.login)
+    }
+  }
+  
+  def canvas = Action {
+    request =>
       Redirect(controllers.routes.Facebook.login)
   }
 

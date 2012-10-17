@@ -12,7 +12,8 @@ GET     /google/oauth2callback      controllers.Google.oauth2callback(state: Str
 
 GET     /facebook/login             controllers.Facebook.login
 GET     /facebook/login/            controllers.Facebook.loginWithParams(ref: Option[String], code: Option[String])
-POST    /facebook/canvas/?*trash    controllers.Facebook.canvas(trash: Option[String])
+POST    /facebook/canvas?*trash     controllers.Facebook.canvasTrash(trash: Option[String])
+POST    /facebook/canvas            controllers.Facebook.canvas
 GET     /facebook/login2            controllers.Facebook.login2(code: String)
 
 GET     /selection/gyms             controllers.Selection.listGyms(select: Boolean = false)
