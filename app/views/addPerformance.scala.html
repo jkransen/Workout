@@ -4,9 +4,8 @@
     
     @helper.form(action = routes.Selection.addPerformance(gym.id, machine.id, exercise.id)) {
     
-    	@helper.inputText(performanceForm("tstamp"))
     	@helper.inputText(performanceForm("weight"))
-    	@helper.inputText(performanceForm("notes"))
+    	@helper.textarea(performanceForm("notes"))
     
 		<input type="submit" value="Save"/>
 	}

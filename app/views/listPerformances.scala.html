@@ -2,10 +2,15 @@
 
 @showExercise(gym, machine, exercise, title) {
     
+    <table>
 	@performances.map { performance =>
-  		@performance.tstamp.format("dd MMM") <strong>@performance.weight kg</strong> @performance.notes<br/>
+		<tr>
+  		<td>@performance.tstamp.format("dd MMM")</td>
+  		<td class="weight">@performance.weight kg</td>
+  		<td>@performance.notes</td>
+  		</tr>
 	} 
-	<br/>
+	</table>
 
     <a class="unselected" href="@routes.Selection.addPerformance(gym.id, machine.id, exercise.id)">Add a performance</a>
     

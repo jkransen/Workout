@@ -1,23 +1,89 @@
 body {
-	background-color: fdfdff;
-	font-family: verdana,arial;
+	background-color: #eeeeff;
+	color: black; font-family : verdana, arial;
 	font-size: 3em;
+	font-family: verdana, arial;
 }
 
 h1 {
-	font-size: 1.5em;
+	font-size: 1em;
+	margin: 0;
 }
 
-.selected, .unselected {
-	margin-bottom: .5em;
-}
-
-.uibutton.selected {
+a.selected,a.unselected {
 	display: block;
-	background-color: #00ee22;
+	text-decoration: none;
+	text-align: center;
+	padding: 2px 4px 2px 4px;
+	/*
+	border: 4px outset;
+	border-radius: 12px;
+	padding: 2px 4px 2px 4px;
+*/
 }
 
-.uibutton.unselected {
-	display: block;
-	background-color: #ff8888;
+a.selected {
+	background-color: #00dd00;
+	color: black;
+}
+
+input[type="submit"],a.unselected {
+	background-color: #ff7000;
+	color: black;
+}
+
+input[type="submit"] {
+	cursor: pointer;
+}
+
+a.selected:hover,a.unselected:hover {
+	cursor: hand;
+}
+
+td {
+	padding: 2px 12px 2px 6px
+}
+
+td.weight {
+	text-align: right;
+	font-weight: bold;
+}
+
+dl,dd {
+	margin: 0;
+}
+
+dt {
+	margin-top: .5em;
+}
+
+input,textarea {
+	font-size: 1em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+textarea {
+	height: 3em;
+}
+
+input,textarea,a.selected,a.unselected {
+	border: 1px solid #ccc;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 2px 2px 3px #666;
+	-moz-box-shadow: 2px 2px 3px #666;
+	box-shadow: 2px 2px 3px #666;
+	/* font-size: 20px; */
+	padding: 4px 7px;
+	outline: 0;
+	-webkit-appearance: none;
+	margin-top: .5em;
+}
+
+input:focus,input:hover,textarea:focus,textarea:hover {
+	border-color: #339933;
 }
