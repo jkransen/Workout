@@ -2,7 +2,11 @@
 
 @home(Some(user), "Your friends") {
     
-	@friends.map { friend =>
-  		<a class="unselected" href="http://www.facebook.com/users/@friend.getId">@friend.getName</a>
-	} 
+    @if(!friends.isEmpty) {
+		@friends.map { friend =>
+	  		<a class="unselected" href="http://www.facebook.com/users/@friend.getId">@friend.getName</a>
+		} 
+    } else {
+    	<p>None of your friends uses the Workout app.</p>
+    }
 }

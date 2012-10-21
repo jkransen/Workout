@@ -2,10 +2,10 @@
 
 @home(user, "Workout") {
 
-	@message<br/>
+	<p>@message</p>
 
 	@if(user.isDefined) {
 	<a class="unselected" href="@routes.Selection.listGyms(false)">Select workout</a>
-	<a class="unselected" href="@routes.Facebook.listFacebookFriends">List Facebook friends</a>
+	<a class="unselected" href="@routes.Facebook.listFacebookFriends">Friends</a>
 	}
 }

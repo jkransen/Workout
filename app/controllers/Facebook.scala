@@ -102,7 +102,7 @@ object Facebook extends Controller {
           (accessToken, expires) =>
             val facebookClient = new DefaultFacebookClient(accessToken)
             val myFriends = facebookClient.fetchConnection("me/friends", classOf[com.restfb.types.User]).getData
-            val activeFriends = myFriends filter (friend => User.findByFacebookId(friend.getId.toLong).isDefined == false)
+            val activeFriends = myFriends filter (friend => User.findByFacebookId(friend.getId.toLong).isDefined)
             Ok(views.html.listFriends(null, activeFriends))
         }
       }.getOrElse {

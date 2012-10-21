@@ -14,7 +14,7 @@ object Application extends Controller {
       val session = request.session
       session.get("connected").map { email =>
         val user = User(email);
-        Ok(views.html.index(Some(user), "Hello " + user.fullname))
+        Ok(views.html.index(Some(user), "Hello, " + user.fullname + "!"))
       }.getOrElse {
         Ok(views.html.index(None, "Not logged in"))
       }
