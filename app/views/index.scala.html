@@ -1,12 +1,11 @@
-@(message: String)
+@(user: Option[User], message: String)
 
-@main("Workout") {
+@home(user, "Workout") {
 
-	<a href="@routes.Application.login">Log in</a>
-	<a href="@routes.Application.logout">Log out</a>
-	<br/>
-	
 	@message<br/>
 
+	@if(user.isDefined) {
 	<a class="unselected" href="@routes.Selection.listGyms(false)">Select workout</a>
+	<a class="unselected" href="@routes.Facebook.listFacebookFriends">List Facebook friends</a>
+	}
 }

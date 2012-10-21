@@ -46,13 +46,12 @@ object Performance {
 
   def byExerciseQ(exerciseId: Long): Query[Performance] = {
     from(allQ) {
-      performance => where(performance.exerciseid === exerciseId).select(performance) // .orderBy(performance.tstamp desc)
+      performance => where(performance.exerciseid === exerciseId).select(performance).orderBy(performance.tstamp desc)
     }
   }
 
   def form(userId: Long, exerciseId: Long) = Form(
     mapping(
-      // "date" -> text,
       "weight" -> number,
       "notes" -> optional(text))((weight, notes) => new Performance(0, new Date(System.currentTimeMillis), weight, notes, userId, exerciseId))(performance => Some(performance.weight, performance.notes)))
 }

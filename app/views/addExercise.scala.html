@@ -1,6 +1,6 @@
-@(exerciseForm: Form[Exercise], gym: Gym, machine: Machine)
+@(user: User, exerciseForm: Form[Exercise], gym: Gym, machine: Machine)
 
-@showMachine(gym, machine, "Add exercise") {
+@showMachine(user, gym, machine, "Add exercise") {
     
     @helper.form(action = routes.Selection.addExercise(gym.id, machine.id)) {
     

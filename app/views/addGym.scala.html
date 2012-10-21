@@ -1,6 +1,6 @@
-@(gymForm: Form[Gym])
+@(user: User, gymForm: Form[Gym])
 
-@main("Add gym") {
+@home(Some(user), "Add gym") {
     
     @helper.form(action = routes.Selection.addGym) {
     

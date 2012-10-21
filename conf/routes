@@ -15,6 +15,8 @@ GET     /facebook/login/            controllers.Facebook.loginWithParams(ref: Op
 POST    /facebook/canvas?*trash     controllers.Facebook.canvasTrash(trash: Option[String])
 POST    /facebook/canvas            controllers.Facebook.canvas
 GET     /facebook/login2            controllers.Facebook.login2(code: String)
+GET     /facebook/listFriends       controllers.Facebook.listFacebookFriends
+GET     /facebook/listFriends2      controllers.Facebook.listFacebookFriends2(code: String)
 
 GET     /selection/gyms             controllers.Selection.listGyms(select: Boolean = false)
 GET     /selection/gyms/            controllers.Selection.listGyms(select: Boolean = true)

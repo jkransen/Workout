@@ -1,6 +1,6 @@
-@(gym: Gym, machine: Machine, exercise: Exercise, performances: Seq[Performance], title: String = "Performances")
+@(user: User, gym: Gym, machine: Machine, exercise: Exercise, performances: Seq[Performance], title: String = "Performances")
 
-@showExercise(gym, machine, exercise, title) {
+@showExercise(user, gym, machine, exercise, title) {
     
     <table>
 	@performances.map { performance =>

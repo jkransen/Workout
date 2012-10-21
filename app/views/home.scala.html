@@ -1,0 +1,13 @@
+@(user: Option[User], title: String = "Workout")(content: Html)
+
+@main(title) {
+
+	@content
+
+    <a class="selected" href="@routes.Application.index">Home</a>
+	@if(user.isDefined) {
+	  <a class="selected" href="@routes.Application.logout">Logout</a>
+    } else {
+	  <a class="unselected" href="@routes.Application.login">Login</a>
+    }
+}

@@ -1,9 +1,8 @@
-@(gym: Gym, title: String = "Gym")(content: Html)
+@(user: User, gym: Gym, title: String = "Gym")(content: Html)
 
-@main(title) {
+@home(Some(user), title) {
 
 	@content
 	
 	<a class="selected" href="@routes.Selection.listGyms(true)">Gym: <strong>@gym.name</strong></a>
-    
 }

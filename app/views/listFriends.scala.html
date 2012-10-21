@@ -1,0 +1,8 @@
+@(user: User, friends: Seq[com.restfb.types.User])
+
+@home(Some(user), "Your friends") {
+    
+	@friends.map { friend =>
+  		<a class="unselected" href="http://www.facebook.com/users/@friend.getId">@friend.getName</a>
+	} 
+}

@@ -28,14 +28,14 @@ object Selection extends Controller {
       if (gyms.isEmpty) Redirect(controllers.routes.Selection.newGym())
       else if (gyms.size == 1 && !select) Redirect(controllers.routes.Selection.getGym(gyms.head.id))
       else {
-        Ok(views.html.listGyms(gyms))
+        Ok(views.html.listGyms(user, gyms))
       }
   }
 
   def newGym = UserAction {
     user =>
       val filledForm = Gym.form(user)
-      Ok(views.html.addGym(filledForm))
+      Ok(views.html.addGym(user, filledForm))
   }
 
   def addGym = Action {
@@ -63,7 +63,7 @@ object Selection extends Controller {
       else if (machines.size == 1 && !select) Redirect(controllers.routes.Selection.getMachine(gymId, machines.head.id))
       else {
         val gym = Gym.findById(gymId)
-        Ok(views.html.listMachines(gym, machines))
+        Ok(views.html.listMachines(user, gym, machines))
       }
   }
 
@@ -71,7 +71,7 @@ object Selection extends Controller {
     user =>
       val gym = Gym.findById(gymId.toLong)
       val filledForm = Machine.form(gymId)
-      Ok(views.html.addMachine(filledForm, gym))
+      Ok(views.html.addMachine(user, filledForm, gym))
   }
 
   def addMachine(gymId: Long) = Action {
@@ -88,7 +88,7 @@ object Selection extends Controller {
     Redirect(controllers.routes.Selection.listExercises(gymId, machineId, false))
   }
 
-  def listExercises(gymId: Long, machineId: Long, select: Boolean) = Action {
+  def listExercises(gymId: Long, machineId: Long, select: Boolean) = UserAction {
     user =>
       val exercises = Exercise.findByMachine(machineId)
       if (exercises.isEmpty) Redirect(controllers.routes.Selection.newExercise(gymId, machineId))
@@ -96,7 +96,7 @@ object Selection extends Controller {
       else {
         val gym = Gym.findById(gymId)
         val machine = Machine.findById(machineId)
-        Ok(views.html.listExercises(gym, machine, exercises))
+        Ok(views.html.listExercises(user, gym, machine, exercises))
       }
   }
 
@@ -105,7 +105,7 @@ object Selection extends Controller {
       val gym = Gym.findById(gymId.toLong)
       val machine = Machine.findById(machineId)
       val filledForm = Exercise.form(machineId).fill(Exercise(0, Some("default"), Some("triceps"), 0))
-      Ok(views.html.addExercise(filledForm, gym, machine))
+      Ok(views.html.addExercise(user, filledForm, gym, machine))
   }
 
   def getExercise(gymId: Long, machineId: Long, exerciseId: Long) = Action {
@@ -128,7 +128,7 @@ object Selection extends Controller {
       val machine = Machine.findById(machineId)
       val exercise = Exercise.findById(exerciseId)
       val performances = Performance.findByExercise(exerciseId)
-      Ok(views.html.listPerformances(gym, machine, exercise, performances))
+      Ok(views.html.listPerformances(user, gym, machine, exercise, performances))
   }
 
   def newPerformance(gymId: Long, machineId: Long, exerciseId: Long) = UserAction {
@@ -139,7 +139,7 @@ object Selection extends Controller {
       val previousPerformance = Performance.findByExercise(exerciseId).headOption
       val assumedWeight = if (previousPerformance.isDefined) previousPerformance.get.weight else 0
       val filledForm = Performance.form(user.id, exerciseId).fill(Performance(0, new java.util.Date(System.currentTimeMillis), assumedWeight, Some(""), 0, 0))
-      Ok(views.html.addPerformance(filledForm, gym, machine, exercise))
+      Ok(views.html.addPerformance(user, filledForm, gym, machine, exercise))
   }
 
   def addPerformance(gymId: Long, machineId: Long, exerciseId: Long) = Action {
